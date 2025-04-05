@@ -37,13 +37,11 @@ def load_local_document(file_path: str) -> str:
     if file_path.endswith(".pdf"):
         with open(file_path, "rb") as f:
             reader = PyPDF2.PdfReader(f)
-            text = "
-".join([page.extract_text() for page in reader.pages if page.extract_text()])
+            text = "".join([page.extract_text() for page in reader.pages if page.extract_text()])
         return text
     elif file_path.endswith(".docx"):
         doc = docx.Document(file_path)
-        return "
-".join([para.text for para in doc.paragraphs if para.text.strip()])
+        return "".join([para.text for para in doc.paragraphs if para.text.strip()])
     else:
         raise ValueError("Unsupported file format. Only PDF and DOCX are allowed.")
 
@@ -70,8 +68,7 @@ def extract_candidate_clauses(sentences: List[str]) -> List[Dict]:
         if is_referential:
             buffer += " " + sent
         elif is_bullet:
-            buffer += "
-" + sent
+            buffer += "" + sent
         else:
             if buffer:
                 clauses.append({"text": buffer.strip(), "referential": is_referential, "bullet": is_bullet})
