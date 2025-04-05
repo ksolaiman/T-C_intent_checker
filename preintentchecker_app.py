@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from pathlib import Path
-from Clause_Extraction_Pipeline_v4_update_step4 import process_documents, normalize_intent, detect_violation, load_local_document
+from Clause_Extraction_Pipeline import process_documents, normalize_intent, detect_violation, load_local_document
 
 st.set_page_config(page_title="Pre-Intent Checker", layout="wide")
 st.title("🔍 Pre-Intention Violation Checker")
